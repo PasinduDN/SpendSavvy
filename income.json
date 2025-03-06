@@ -1,0 +1,14 @@
+[
+    {
+        "description": "Income 1",
+        "amount": 100000.0
+    },
+    {
+        "description": "Income 2",
+        "amount": 120000.0
+    },
+    {
+        "description": "Income 3",
+        "amount": 140000.0
+    }
+]
