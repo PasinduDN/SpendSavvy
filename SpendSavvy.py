@@ -1,5 +1,6 @@
 import json
 import os
+import pyfiglet
 
 def addIncome(desc, amount, incomeRecordPath):
 
@@ -55,8 +56,8 @@ def addExpense(expenses, desc, amount, expenseRecordPath):
 
     print(f"Added expense: {desc}, Amount: {amount}")
 
-def showIncome(incomeRecordPath):
-    print("Income : ")
+def showIncome(incomeRecordPath, incomeBanner):
+    print(incomeBanner)
 
     existingData = []
 
@@ -94,8 +95,8 @@ def getTotalIncome(incomeRecordPath):
         sum += expense['amount']
     return sum
 
-def showExpense(expenseRecordPath):
-    print("Expense : ")
+def showExpense(expenseRecordPath, expensebanner):
+    print(expensebanner)
 
     existingData = []
 
@@ -142,7 +143,10 @@ def loadBurgetData(filepath):
         return 0, []
 
 def main():
-    print("Welcome to Budget app")
+    Welcomeanner = pyfiglet.figlet_format("SpendSavvy", justify="center", width=100)
+    incomeBanner = pyfiglet.figlet_format("Income", justify="Left", width=100)
+    expensebanner = pyfiglet.figlet_format("Expense", justify="Left", width=100)
+    print(Welcomeanner)
     filepath = 'budget_data.json'
     incomeRecordPath = 'income.json'
     expenseRecordPath = 'expenses.json'
@@ -169,16 +173,17 @@ def main():
                 addExpense(expenses, desc, amount, expenseRecordPath)
                 continue
             elif(choice == 3):
-                showIncome(incomeRecordPath)
+                showIncome(incomeRecordPath, incomeBanner)
                 continue
             elif(choice == 4):
-                showExpense(expenseRecordPath)
+                showExpense(expenseRecordPath, expensebanner)
                 continue
             elif(choice == 5):
-                print("3 Exit" )
+                break
             else:
-                print(f"Invalid input... Please enter a valid number.")
+                print(f"Invalid input... Please enter a valid number.\n")
         except ValueError:
-            print(f"Invalid input... Please enter a valid number.")
+            print(f"Invalid input... Please enter a valid number.\n")
+    print("Enjoyy...!")
 
 main()
